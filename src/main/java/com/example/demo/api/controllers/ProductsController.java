@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.business.abstracts.ProductService;
@@ -37,8 +38,11 @@ public class ProductsController {
 		return this.productService.add(product);
 	}
 	
-	@GetMapping("/hello")
-	public String getHello() {
-		return "hello world";
-	}
+	@GetMapping("/getByProductName")
+	public DataResult<Product> getByProductName(@RequestParam String productName){
+		return this.productService.getByProductName(productName);
+	} 
+	
+	
+
 }

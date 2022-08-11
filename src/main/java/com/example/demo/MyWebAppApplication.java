@@ -25,6 +25,7 @@ public class MyWebAppApplication {
           .build();                                           
     }
 	
-	// 8. gün
+	// 8. gün 
+	// saat 2.0.0
 
 }
