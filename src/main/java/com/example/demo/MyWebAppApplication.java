@@ -24,8 +24,4 @@ public class MyWebAppApplication {
           .apis(RequestHandlerSelectors.basePackage("com.example.demo"))                                       
           .build();                                           
     }
-	
-	// 8. gün 
-	// saat 2.0.0
-
 }

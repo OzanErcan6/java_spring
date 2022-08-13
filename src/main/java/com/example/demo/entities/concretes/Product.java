@@ -25,6 +25,7 @@ public class Product {
 	@Column(name="product_id")
 	private int id;
 	
+	// entity framework'de verilebilir hibernate'de duplicate alan silinir
 	//@Column(name="category_id")
 	//private int categoryId;
 	
@@ -40,6 +41,7 @@ public class Product {
 	@Column(name="quantity_per_unit")
 	private String quantityPerUnit;
 	
+	// birden fazla product tek bir category'ye gidebilir
 	@ManyToOne()
 	@JoinColumn(name="category_id") 
 	private Category category;

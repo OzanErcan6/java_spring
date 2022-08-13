@@ -14,6 +14,7 @@ import com.example.demo.business.abstracts.ProductService;
 import com.example.demo.core.utilities.results.DataResult;
 import com.example.demo.core.utilities.results.Result;
 import com.example.demo.entities.concretes.Product;
+import com.example.demo.entities.dtos.ProductWithCategoryDto;
 
 // controller api katmanıdır, dış dünyanya iletişim kurulur
 @RestController //  The RestController allows to handle all REST APIs such as GET, POST, Delete, PUT requests. 
@@ -32,6 +33,21 @@ public class ProductsController {
 	public DataResult<List<Product>> getAll(){
 		return this.productService.getAll();
 	} 
+	
+	@GetMapping("/getallByPage")
+	public DataResult<List<Product>> getAll(@RequestParam int pageNo,@RequestParam int pageSize){
+		return this.productService.getAll(pageNo, pageSize);
+	} 
+	
+	@GetMapping("/getAllSortedDesc")
+	public DataResult<List<Product>> getAllSortedDesc(){
+		return this.productService.getAllSortedDesc();
+	} 
+	
+	@GetMapping("/getAllSortedAsc")
+	public DataResult<List<Product>> getAllSortedAsc(){
+		return this.productService.getAllSortedAsc();
+	} 
 	 
 	@PostMapping("/add")
 	public Result add(@RequestBody Product product){
@@ -43,6 +59,25 @@ public class ProductsController {
 		return this.productService.getByProductName(productName);
 	} 
 	
-	
+	@GetMapping("/getByProductNameAndCategoryId")
+	public DataResult<Product> getByProductNameAndCategory(@RequestParam("productName") String productName, @RequestParam("categoryId") int categoryId){
+		return this.productService.getByProductNameAndCategoryId(productName, categoryId);
+	}
 
+	@GetMapping("/getByProductNameOrCategoryId")
+	DataResult<List<Product>> getByProductNameOrCategoryId(@RequestParam("productName") String productName, @RequestParam("categoryId") int categoryId){
+		return this.productService.getByProductNameOrCategoryId(productName, categoryId);
+	}
+	
+	@GetMapping("/getByProductNameContains")
+	DataResult<List<Product>> getByProductNameContains(@RequestParam String productName){
+		return this.productService.getByProductNameContains(productName);
+	}
+	
+	@GetMapping("/getProductWithCategoryDetails")
+	DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+		return this.productService.getProductWithCategoryDetails();
+	}
+
+	
 }
