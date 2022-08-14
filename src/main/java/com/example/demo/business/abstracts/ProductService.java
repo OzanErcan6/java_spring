@@ -3,6 +3,7 @@ package com.example.demo.business.abstracts;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.core.utilities.results.DataResult;
 import com.example.demo.core.utilities.results.Result;
@@ -11,6 +12,7 @@ import com.example.demo.entities.dtos.ProductWithCategoryDto;
 
 // iş kuralları burada yazılır
 // or: bir üretici hepsiburada da kendi ürünlerinden max 100 tane ekleyebilir..
+@Service
 public interface ProductService {
 	DataResult<List<Product>> getAll();
 	
