@@ -3,6 +3,7 @@ package com.example.demo.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import com.example.demo.entities.dtos.ProductWithCategoryDto;
 // controller api katmanıdır, dış dünyanya iletişim kurulur
 @RestController //  The RestController allows to handle all REST APIs such as GET, POST, Delete, PUT requests. 
 @RequestMapping("/api/products")
+@CrossOrigin
 public class ProductsController {
 	
 	private ProductService productService;
