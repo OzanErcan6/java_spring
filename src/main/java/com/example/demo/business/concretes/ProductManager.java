@@ -3,6 +3,7 @@ package com.example.demo.business.concretes;
 
 import java.util.List;
 
+import com.example.demo.entities.dtos.CategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,35 +23,35 @@ import com.example.demo.entities.dtos.ProductWithCategoryDto;
 // asıl işlerin yapıldığı yer
 @Service
 public class ProductManager implements ProductService{
-	
-	private ProductDao productDao; 
-	
+
+	private ProductDao productDao;
+
 	@Autowired // ProductDao'nun somut olan bir sınıfının newlenmiş nesnesini sağlar
 	public ProductManager(ProductDao productDao) {
 		super();
 		this.productDao = productDao;
 	}
-	
+
 	@Override
 	public 	DataResult <List<Product>> getAll(){
 		return new SuccessDataResult <List<Product>>
 			(this.productDao.findAll(),"Data listelendi");
 	}
-	
+
 	@Override
 	public DataResult<List<Product>> getAllSortedDesc() {
 		Sort sort = Sort.by(Sort.Direction.DESC, "productName");
 		return new SuccessDataResult <List<Product>>
 		(this.productDao.findAll(sort),"Data listelendi");
 	}
-	
+
 	@Override
 	public DataResult<List<Product>> getAllSortedAsc() {
 		Sort sort = Sort.by(Sort.Direction.ASC, "productName");
 		return new SuccessDataResult <List<Product>>
 		(this.productDao.findAll(sort),"Data listelendi");
 	}
-	
+
 	@Override
 	public DataResult<List<Product>> getAll(int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo-1, pageSize);
@@ -111,7 +112,12 @@ public class ProductManager implements ProductService{
 		(this.productDao.getProductWithCategoryDetails(),"Data listelendi");
 	}
 
+	@Override
+	public DataResult<List<CategoryDto>> getCategoryTypes() {
+		return new SuccessDataResult <List<CategoryDto>>
+				(this.productDao.getCategoryTypes(),"Data listelendi");
 
+	}
 
 
 }
