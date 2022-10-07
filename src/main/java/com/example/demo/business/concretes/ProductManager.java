@@ -82,12 +82,12 @@ public class ProductManager implements ProductService{
 		(this.productDao.getByProductNameOrCategory_CategoryId(productName, categoryId),"Data listelendi");
 	}
 
-	@Override
-	public DataResult<List<Product>> getByCategoryIn(List<Integer> categories) {
-		return new SuccessDataResult <List<Product>>
-		(this.productDao.getByCategoryIn(categories),"Data listelendi");
-	}
 
+	@Override
+	public DataResult<List<Product>> getByCategoryId(int categoryId) {
+		return new SuccessDataResult <List<Product>>
+				(this.productDao.getByCategoryId(categoryId),"Data listelendi");
+	}
 	@Override
 	public DataResult<List<Product>> getByProductNameContains(String productName) {
 		return new SuccessDataResult <List<Product>>

@@ -18,8 +18,8 @@ public interface ProductDao extends JpaRepository<Product, Integer>{
 	Product getByProductNameAndCategory_CategoryId(String productName, int categoryId);
 
 	List<Product> getByProductNameOrCategory_CategoryId(String productName, int categoryId);
-
-	List<Product> getByCategoryIn(List<Integer> categories);
+	@Query("From Product where category.categoryId=:categoryId")
+	List<Product> getByCategoryId(int categoryId);
 
 	List<Product> getByProductNameContains(String productName);
 

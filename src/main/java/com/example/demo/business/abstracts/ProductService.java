@@ -31,7 +31,7 @@ public interface ProductService {
 
 	DataResult<List<Product>> getByProductNameOrCategoryId(String productName, int categoryId);
 
-	DataResult<List<Product>> getByCategoryIn(List<Integer> categories);
+	DataResult<List<Product>> getByCategoryId(int categories);
 
 	DataResult<List<Product>> getByProductNameContains(String productName);
 
